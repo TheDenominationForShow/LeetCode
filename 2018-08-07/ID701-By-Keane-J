@@ -1,0 +1,33 @@
+###Leetcode 701 二叉搜索树中的插入操作
+static auto XXX = [] {
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr);
+    return false;
+}();
+
+class Solution {
+public:
+    TreeNode* insertIntoBST(TreeNode* root, int val) {
+        if (!root) {
+            root = new TreeNode(val);
+            return root;
+        }
+        TreeNode *p = root;
+        if (root->val > val) {
+            if (root->left == nullptr) {
+                TreeNode *p = new TreeNode(val);
+                root->left = p;
+                return root;
+            }
+            insertIntoBST(root->left, val);
+        } else if (root->val < val) {
+            if (root->right == nullptr) {
+                TreeNode *p = new TreeNode(val);
+                root->right = p;
+                return root;
+            }
+            insertIntoBST(root->right, val);
+        }
+        return root;   
+    }
+};
