@@ -47,3 +47,25 @@ public:
     }
 };
 ```
+
+### 优解
+```c++
+class Solution {
+public:
+    bool hasCycle(ListNode *head) {
+        if (head == nullptr || head->next == nullptr) {
+            return false;
+        }
+        ListNode *p = head;
+        ListNode *q = head->next;
+        while (q && q != p && q->next != nullptr) {
+            p = p->next;
+            q = q->next->next;
+        }
+        if (q == p) {
+            return true;
+        }
+        return false;
+    }
+};
+```
