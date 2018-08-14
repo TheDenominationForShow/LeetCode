@@ -1,0 +1,19 @@
+func isSymmetric(root *TreeNode) bool {
+    return isSymmetrics(root, nil, nil)
+}
+
+func isSymmetrics(root *TreeNode, left *TreeNode, right *TreeNode) bool {
+    if root != nil {
+        return isSymmetrics(nil, root.Left, root.Right)
+    }
+    
+    if left == nil && right == nil {
+        return true;
+    } else if left == nil || right == nil {
+        return false;
+    } else if left.Val != right.Val {
+        return false;
+    }
+
+    return isSymmetrics(nil, left.Left, right.Right) && isSymmetrics(nil, left.Right, right.Left)
+}
